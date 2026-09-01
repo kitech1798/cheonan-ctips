@@ -2364,7 +2364,7 @@ function renderPlan(){
 
 function initMap(){
   map=L.map('map',{zoomControl:true}).setView([36.815,127.16],11);
-  baseLayer=L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:20,subdomains:'abcd',attribution:'© OpenStreetMap © CARTO'}).addTo(map);
+  baseLayer=L.layerGroup([L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:20,maxNativeZoom:16,attribution:'© Esri, © OpenStreetMap contributors'}),L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:20,maxNativeZoom:16})]).addTo(map);
   satLayer=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:18,attribution:'© Esri'});
   // 데코 전용 pane — 폴리곤(overlayPane 400) 위에 그리되 클릭은 통과시킴(pointer-events:none)
   map.createPane('deco'); const dp=map.getPane('deco'); dp.style.zIndex=450; dp.style.pointerEvents='none';
